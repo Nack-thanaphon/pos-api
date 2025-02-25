@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  pos-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    container_name: pos-api
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - 80:3500
