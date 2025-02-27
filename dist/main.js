@@ -5,6 +5,8 @@ const app_module_1 = require("./app.module");
 const bodyParser = require("body-parser");
 const swagger_1 = require("@nestjs/swagger");
 const basicAuth = require("express-basic-auth");
+const dotenv = require("dotenv");
+dotenv.config();
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
@@ -25,7 +27,7 @@ async function bootstrap() {
         .build();
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('document', app, document);
-    await app.listen(3500);
+    await app.listen(process.env.BACKEND_PORT || 3001);
 }
 bootstrap();
 //# sourceMappingURL=main.js.map

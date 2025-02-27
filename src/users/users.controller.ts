@@ -25,8 +25,6 @@ export class UsersController {
   async login(
     @Body() createUserDto: CreateUserDto,
   ) {
-
-
     const checkData = await this.usersService.createOrGetData(createUserDto)
 
     if (checkData.status === "CREATE") {
