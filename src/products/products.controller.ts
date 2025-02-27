@@ -48,6 +48,8 @@ export class ProductsController {
   }
 
 
+
+
   @Get('getOne/:id')
   async findOne(@Param('id') id: number) {
     const response = await this.productsService.findOne({
@@ -56,27 +58,16 @@ export class ProductsController {
     if (!response) {
       throw new NotFoundException(`Product with ID ${id} not found`);
     }
-    const baseUrl = process.env.BACKEND_URL || 'http://localhost:3500/';
-    if (response.image_url) {
-      response.image_url = baseUrl + response.image_url;
-    }
+
     return response;
   }
 
   @Patch('update/:id')
   async update(
     @Param('id') id: string,
-    @Body() updateProductDto: UpdateProductDto,
-    @Body('image') imageUrl: string,
+    @Body() updateLogsDto: UpdateProductDto,
   ) {
-    // if (imageUrl && typeof imageUrl === 'string' && imageUrl.trim() !== '') {
-    //   const imagePath = await this.fileUploadService.uploadFile(
-    //     imageUrl,
-    //     'products',
-    //   );
-    //   updateProductDto.image_url = imagePath;
-    // }
-    return this.productsService.update(+id, updateProductDto);
+    return this.productsService.update(+id, updateLogsDto);
   }
 
   @Patch('updateStatus')

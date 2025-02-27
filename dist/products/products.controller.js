@@ -34,14 +34,10 @@ let ProductsController = class ProductsController {
         if (!response) {
             throw new common_1.NotFoundException(`Product with ID ${id} not found`);
         }
-        const baseUrl = process.env.BACKEND_URL || 'http://localhost:3500/';
-        if (response.image_url) {
-            response.image_url = baseUrl + response.image_url;
-        }
         return response;
     }
-    async update(id, updateProductDto, imageUrl) {
-        return this.productsService.update(+id, updateProductDto);
+    async update(id, updateLogsDto) {
+        return this.productsService.update(+id, updateLogsDto);
     }
     updateStatus(id, status) {
         return this.productsService.status(+id, status);
@@ -79,9 +75,8 @@ __decorate([
     (0, common_1.Patch)('update/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
-    __param(2, (0, common_1.Body)('image')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, update_product_dto_1.UpdateProductDto, String]),
+    __metadata("design:paramtypes", [String, update_product_dto_1.UpdateProductDto]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "update", null);
 __decorate([

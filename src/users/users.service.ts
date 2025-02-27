@@ -88,7 +88,7 @@ export class UserService extends CrudService<User> {
 
     if (!existOrNot.status) {
       data.status = true;
-      data.role = 2;
+      data.role = 1;
       data.code = await this.getNewCode();
       const save = await this.create(data);
       if (save) {

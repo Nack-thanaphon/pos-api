@@ -10,7 +10,7 @@ export declare class ProductsController {
         total: number;
     }>;
     findOne(id: number): Promise<import("./entities/product.entity").Product>;
-    update(id: string, updateProductDto: UpdateProductDto, imageUrl: string): Promise<import("./entities/product.entity").Product>;
+    update(id: string, updateLogsDto: UpdateProductDto): Promise<import("./entities/product.entity").Product>;
     updateStatus(id: string, status: boolean): Promise<{
         status: string;
         data: import("./entities/product.entity").Product;
